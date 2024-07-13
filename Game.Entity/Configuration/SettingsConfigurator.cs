@@ -14,10 +14,10 @@ namespace Game.Domain.Configuration
     /// </summary>
     public class SettingsConfigurator : ISettingsConfiguration
     {
-        protected static Settings<int> _settings;
+       protected static Settings _settings;
        static SettingsConfigurator()
         {
-            _settings = new Settings<int>
+            _settings = new Settings
             {
                 FirstRange = 0,
                 LastRange = 100,
@@ -25,7 +25,7 @@ namespace Game.Domain.Configuration
             };
         }
 
-        public Settings<int> ConfigureSettings()
+        public Settings ConfigureSettings()
         {
             return _settings;
         }

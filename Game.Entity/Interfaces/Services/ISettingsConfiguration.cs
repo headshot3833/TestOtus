@@ -12,6 +12,6 @@ namespace Game.Domain.Interfaces.Services
     /// </summary>
     public interface ISettingsConfiguration
     {
-        Settings<int> ConfigureSettings();
+        Settings ConfigureSettings();
     }
 }

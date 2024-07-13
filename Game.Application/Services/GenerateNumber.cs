@@ -15,9 +15,9 @@ namespace Game.Application.Services
     /// </summary>
     public class GenerateNumberService : IGenerateNumber
     {
-        private readonly Settings<int> _settings;
+        private readonly Settings _settings;
 
-        public GenerateNumberService(Settings<int> settings)
+        public GenerateNumberService(Settings settings)
         {
             _settings = settings;
         }

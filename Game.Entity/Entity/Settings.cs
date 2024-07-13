@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Game.Domain.Entity
 {
-    public class Settings<T>
+    public class Settings
     {
-        public T FirstRange { get; set; }
+        public int FirstRange { get; set; }
 
-        public T LastRange { get; set; }
+        public int LastRange { get; set; }
 
-        public T ScoreTry { get; set; }
+        public int ScoreTry { get; set; }
     }
 }
