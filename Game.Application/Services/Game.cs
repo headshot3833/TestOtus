@@ -23,7 +23,7 @@ namespace Game.Application.Services
 
         public void EndGame()
         {
-            Console.WriteLine("Если хотите ещё, нажмите Enter.");
+            Console.WriteLine("Если хотите ещё, нажмите Enter, подсказка число 0 до 100");
             Console.ReadLine();
         }
 
