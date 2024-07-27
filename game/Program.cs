@@ -8,9 +8,10 @@ class Program
 {
     static void Main(string[] args)
     {
+        UserInterface userInterface = new UserInterface();
         while (true)
         {
-            GameRandomNumber gameRandomNumber = new GameRandomNumber();
+            GameRandomNumber gameRandomNumber = new GameRandomNumber(userInterface);
             gameRandomNumber.StartGame();
             gameRandomNumber.EndGame();
         }

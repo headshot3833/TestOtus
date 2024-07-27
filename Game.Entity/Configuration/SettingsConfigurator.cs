@@ -14,8 +14,8 @@ namespace Game.Domain.Configuration
     /// </summary>
     public class SettingsConfigurator : ISettingsConfiguration
     {
-       protected static Settings _settings;
-       static SettingsConfigurator()
+        public Settings _settings;
+        public SettingsConfigurator()
         {
             _settings = new Settings
             {

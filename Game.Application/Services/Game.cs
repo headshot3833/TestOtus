@@ -14,17 +14,19 @@ namespace Game.Application.Services
     {
         private readonly Settings _settings;
         private int _targetNumber;
-        public GameRandomNumber()
+        private readonly UserInterface _userInterface;
+
+        public GameRandomNumber(UserInterface userInterface)
         {
             ISettingsConfiguration settingsConfiguration = new SettingsConfigurator();
             _settings = settingsConfiguration.ConfigureSettings();
-
+            _userInterface = userInterface;
         }
 
         public void EndGame()
         {
-            Console.WriteLine("Если хотите ещё, нажмите Enter, подсказка число 0 до 100");
-            Console.ReadLine();
+            _userInterface.ShowGameMessage("Если хотите ещё, нажмите Enter, подсказка число 0 до 100");
+            _userInterface.GetInput();
         }
 
         public void StartGame()
@@ -37,44 +39,44 @@ namespace Game.Application.Services
 
             int targetNumber = generatedNumber.Number;
 
-            Console.WriteLine("попробуй угадай число");
+            _userInterface.ShowGameMessage("попробуй угадай число");
 
             for (int i = 0; i < settings.ScoreTry; i++)
             {
-                Console.Write($"попыток {i + 1}/{settings.ScoreTry}: пробуйте!: ");
-                string userInput = Console.ReadLine();
+                _userInterface.ShowGameMessage($"попыток {i + 1}/{settings.ScoreTry}: пробуйте!: ");
+                string userInput = _userInterface.GetInput();
                 if (int.TryParse(userInput, out int userGuess))
                 {
                     if (userGuess < targetNumber)
                     {
-                        Console.WriteLine("Введенное число меньше загаданного.");
+                        _userInterface.ShowGameMessage("Введенное число меньше загаданного.");
                     }
                     else if (userGuess > targetNumber)
                     {
-                        Console.WriteLine("Введенное число больше загаданного");
+                        _userInterface.ShowGameMessage("Введенное число больше загаданного");
                     }
                     if (userGuess == targetNumber)
                     {
-                        Console.WriteLine("вы угадали число!");
+                        _userInterface.ShowGameMessage("вы угадали число!");
                         break;
                     }
                     else
                     {
-                        Console.WriteLine("не правильно пробуйте ещё!");
+                        _userInterface.ShowGameMessage("не правильно пробуйте ещё!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Некорректный ввод. Пожалуйста, введите целое число.");
+                    _userInterface.ShowGameMessage("Некорректный ввод. Пожалуйста, введите целое число.");
                 }
 
                 if (i == settings.ScoreTry - 1)
                 {
-                    Console.WriteLine($"Попытки закончились. Загаданное число было {targetNumber}.");
+                    _userInterface.ShowGameMessage($"Попытки закончились. Загаданное число было {targetNumber}.");
                 }
             }
 
-            Console.ReadLine();
+            _userInterface.GetInput();
         }
     }
 }
